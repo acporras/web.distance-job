@@ -11,10 +11,13 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run distance-job:server:production --bundleDependencies all"
+    "build:client-and-server-bundles": "ng build --prod && ng run distance-job:server:production --bundleDependencies all",
+    "postinstall": "ng build --prod",
+    "heroku-postbuild": "npm run postinstall"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~8.3.17",
     "@angular/animations": "~8.2.13",
     "@angular/common": "~8.2.13",
     "@angular/compiler": "~8.2.13",
@@ -33,7 +36,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.17",
-    "@angular/cli": "~8.3.17",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
     "@types/node": "~8.9.4",
